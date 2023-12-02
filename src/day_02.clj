@@ -11,7 +11,7 @@
 
 
 (def input
-  (-> "../data/day_02.txt"
+  (-> "data/day_02.txt"
       slurp
       string/split-lines))
 
