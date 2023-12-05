@@ -20,8 +20,8 @@
   "Find the maximal usage of given color in given game."
   [color game-str]
   (->> game-str
-       (re-seq (re-pattern (str "(\\d+) " color)))
-       (map (comp read-string second) )
+       (re-find (re-pattern (str "(\\d+) " color)))
+       (map read-string)
        (apply max)))
 
 
@@ -38,7 +38,7 @@
 ;; part 1
 (defn part-1 [input]
   (->> input
-       (map (partial evaluate-1))
+       (map evaluate-1)
        (zipmap (iterate inc 1))
        (filter second)
        (map first)
