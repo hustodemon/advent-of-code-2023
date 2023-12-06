@@ -1,0 +1,40 @@
+#+title: Day 6
+
+* Org mode with babel and babashka for solving?
+
+Why not?
+
+#+begin_src clojure :backend babashka
+(use 'clojure.string)
+
+(def example-input
+  "Time:      7  15   30
+Distance:  9  40  200")
+
+(defn formula [total-time press-time]
+  (* press-time (- total-time press-time)))
+
+(defn parse-games
+  [lines-str]
+  (->> (clojure.string/split-lines lines-str)
+       (map (fn remove-description [s] (clojure.string/replace-first s #"\D+" "")))
+       (map (fn line-to-numbers [s] (map parse-long (clojure.string/split s #"\s+"))))
+       (apply map vector)))
+
+(defn count-winning-games
+  [[total-time record]]
+  (let [fst-losing-distances (filter (fn [i] (> (formula total-time i) record))
+                                     (take (+ total-time 1) (iterate inc 0)))]
+    (count fst-losing-distances)))
+
+(defn part-1
+  [input]
+  (let [games         (parse-games input)
+        winning-games (map count-winning-games games)]
+    (apply * winning-games)))
+
+(part-1 example-input)
+#+end_src
+
+#+RESULTS:
+: 288
