@@ -7,3 +7,5 @@ This year clojure again. Let's see, what has been forgotten in 2 years!
 - async/coroutines
 - spec2 or malli
 - test framework
+- base project on deps.edn, not leiningen
+- improve my cleverparens usage
