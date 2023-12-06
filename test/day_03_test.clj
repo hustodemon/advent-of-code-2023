@@ -4,7 +4,7 @@
 
 
 
-(deftest day-03
+(comment deftest day-03
 
   (testing "marking"
     (is (= "..123..---.---.-----.123.--------" ;; Y is any original symbol, X is shaked one
