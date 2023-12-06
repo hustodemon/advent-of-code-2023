@@ -1,4 +1,9 @@
 #+title: Readme
 
+This year clojure again. Let's see, what has been forgotten in 2 years!
 
-- debugger
+* What would I like to learn/improve this time?
+- more debugging (e.g. cider, sayid, ghostwheel...)
+- async/coroutines
+- spec2 or malli
+- test framework
