@@ -25,7 +25,7 @@ QQQJA 483"))
   (parse-input (slurp "data/day_07.txt")))
 
 
-(mx/defn group-strength
+(mx/defn hand-strength :- :int
   [card :- [:string {:min 5, :max 5}]]
   (let [same-card-partitions   (partition-by identity (sort card))
         partition-sizes-sorted (sort-by - (map count same-card-partitions))]
@@ -35,7 +35,7 @@ QQQJA 483"))
       (= [3 2] (take 2 partition-sizes-sorted)) 5    ;; Full house
       (= 3 (first partition-sizes-sorted))      4    ;; 3-of-kind
       (= [2 2] (take 2 partition-sizes-sorted)) 3    ;; 2 pairs
-      (= [2 1] (take 2 partition-sizes-sorted)) 2    ;; 1 pair
+      (= 2 (first partition-sizes-sorted))      2    ;; 1 pair
       :else                                     1))) ;; high card
 
 
@@ -45,9 +45,9 @@ QQQJA 483"))
    (iterate inc 1)))
 
 
-(defn extract-comparison-values [[card-group _]]
-  [(card-group-strength card-group)
-   (mapv #(card->strength %) card-group)])
+(defn extract-comparison-values [[hand _]]
+  [(hand-strength hand)
+   (mapv #(card->strength %) hand)])
 
 
 (mx/defn part-1 :- :int
@@ -60,3 +60,45 @@ QQQJA 483"))
 
 (part-1 example-input)
 (part-1 input)
+;; part 2
+(def joker-pimp ;; how much can a single joker pimp the hand
+  {1 2 ;; high card -> 1 pair
+   2 4 ;; 1 pair -> 3-of-kind
+   3 5 ;; ...
+   4 6
+   5 6
+   6 7
+   7 7})
+
+;; part 2
+(mx/defn hand-strength-2 :- :int
+  [hand :- [:string {:min 5, :max 5}]]
+  (let [hand-no-Js              (string/replace hand #"J" "")
+        count-Js                (count (re-seq #"J" hand))
+        hand-strength-no-jokers (hand-strength hand-no-Js)]
+    (min
+     7
+     (nth (iterate joker-pimp hand-strength-no-jokers) count-Js))))
+
+
+(def card->strength-2
+  (zipmap
+   "J23456789TQKA"
+   (iterate inc 1)))
+
+(defn extract-comparison-values-2 [[hand _]]
+  [(hand-strength-2 hand)
+   (mapv #(card->strength-2 %) hand)])
+
+(mx/defn part-2 :- :int
+  [parsed-input :- [:sequential [:tuple :string :string]]]
+  (let [sorted-hands (sort-by extract-comparison-values-2 parsed-input)
+        bids         (map second sorted-hands)
+        scores       (map-indexed (fn [idx bid] (* (inc idx) (parse-long bid))) bids)]
+    (apply + scores)))
+
+
+(part-2 example-input)
+;; takes some time (~20 s)
+;; (part-2 input)
+;; => 249356515
