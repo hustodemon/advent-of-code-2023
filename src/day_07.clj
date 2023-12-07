@@ -46,7 +46,7 @@ QQQJA 483"))
 
 
 (defn extract-comparison-values [[card-group _]]
-  [(group-strength card-group)
+  [(card-group-strength card-group)
    (mapv #(card->strength %) card-group)])
 
 
