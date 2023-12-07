@@ -70,7 +70,7 @@ QQQJA 483"))
    6 7
    7 7})
 
-;; part 2
+
 (mx/defn hand-strength-2 :- :int
   [hand :- [:string {:min 5, :max 5}]]
   (let [hand-no-Js              (string/replace hand #"J" "")
@@ -86,9 +86,11 @@ QQQJA 483"))
    "J23456789TQKA"
    (iterate inc 1)))
 
+
 (defn extract-comparison-values-2 [[hand _]]
   [(hand-strength-2 hand)
    (mapv #(card->strength-2 %) hand)])
+
 
 (mx/defn part-2 :- :int
   [parsed-input :- [:sequential [:tuple :string :string]]]
