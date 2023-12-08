@@ -60,6 +60,8 @@ QQQJA 483"))
 
 (part-1 example-input)
 (part-1 input)
+
+
 ;; part 2
 (def joker-pimp ;; how much can a single joker pimp the hand
   {1 2 ;; high card -> 1 pair
@@ -73,12 +75,13 @@ QQQJA 483"))
 
 (mx/defn hand-strength-2 :- :int
   [hand :- [:string {:min 5, :max 5}]]
-  (let [hand-no-Js              (string/replace hand #"J" "")
-        count-Js                (count (re-seq #"J" hand))
-        hand-strength-no-jokers (hand-strength hand-no-Js)]
+  (let [hand-no-Js               (string/replace hand #"J" "")
+        count-Js                 (count (re-seq #"J" hand))
+        hand-strength-with-no-Js (hand-strength hand-no-Js)
+        pimped-hands             (iterate joker-pimp hand-strength-with-no-Js)]
     (min
      7
-     (nth (iterate joker-pimp hand-strength-no-jokers) count-Js))))
+     (nth pimped-hands count-Js)))) ;; pimp my hand with "count-Js" jokers))
 
 
 (def card->strength-2
@@ -102,5 +105,5 @@ QQQJA 483"))
 
 (part-2 example-input)
 ;; takes some time (~20 s)
-;; (part-2 input)
+; (part-2 input)
 ;; => 249356515
