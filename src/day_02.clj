@@ -1,5 +1,7 @@
 (ns day-02
-  (:require [clojure.string :as string]))
+  (:require
+   [clojure.string :as string]
+   [utils :refer [print-solution]]))
 
 
 (def example-input
@@ -44,9 +46,7 @@
        (map first)
        (reduce +)))
 
-(println (part-1 example-input))
-(println (part-1 input))
-
+(print-solution 1 (part-1 input))
 
 ;; part 2
 (defn evaluate-2 [game-str]
@@ -61,5 +61,5 @@
        (reduce +)))
 
 
-(println (part-2 example-input))
-(println (part-2 input))
+;(print-solution 2 (part-2 example-input))
+(print-solution 2 (part-2 input))

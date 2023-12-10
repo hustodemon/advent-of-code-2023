@@ -1,7 +1,8 @@
 (ns day-04
   (:require [clojure.string :as string]
             [clojure.set :as cset]
-            [clojure.math :refer [pow]]))
+            [clojure.math :refer [pow]]
+            [utils :refer [print-solution]]))
 
 (def example-input
   ["Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53"
@@ -13,7 +14,7 @@
 
 
 (def input
-  (-> "../data/day_04.txt"
+  (-> "data/day_04.txt"
       slurp
       string/split-lines))
 
@@ -29,5 +30,9 @@
       (int (pow 2 (dec count-common))))))
 
 
-(apply + (map eval-line example-input))
-(apply + (map eval-line input))
+(defn solve [input]
+  (apply + (map eval-line input)))
+
+
+;; (print-solution 1 (solve example-input))
+(print-solution 1 (solve input))

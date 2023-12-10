@@ -3,7 +3,7 @@
    [clojure.set :as cset]
    [clojure.string :as string]
    [malli.experimental :as mx]
-   [utils]))
+   [utils :refer [print-solution]]))
 
 
 (def example-input
@@ -82,9 +82,9 @@ XXX = (XXX, XXX)")
        (recur (inc steps) (traverse node (first insts) nodes) (rest insts))))))
 
 
-(part-1 (parse-input example-input))
-(part-1 (parse-input example-input-2))
-(part-1 (parse-input input))
+;;(part-1 (parse-input example-input))
+;;(part-1 (parse-input example-input-2))
+(print-solution 1 (part-1 (parse-input input)))
 
 
 (defn- nodes-ending-with [s nodes]
@@ -116,7 +116,7 @@ XXX = (XXX, XXX)")
     (lcm lenghts)))
 
 
-(part-2-1 (parse-input example-input-3))
+;; (part-2-1 (parse-input example-input-3))
 ;; DO NOT RUN! it'll blow up, but the correct answer is 20685524831999
 ;; we need more efficient implementation :)
 ;;(part-2-1 (parse-input input))

@@ -1,5 +1,7 @@
 (ns day-01
-  (:require [clojure.string :as string]))
+  (:require
+   [clojure.string :as string]
+   [utils :refer [print-solution]]))
 
 (def example-input-1
   ["1abc2"
@@ -21,9 +23,7 @@
        (map (fn [ds] (parse-long (str (first ds) (last ds)))))
        (reduce +)))
 
-
-(println (part-1 example-input-1))
-(println (part-1 input))
+(print-solution 1 (part-1 input))
 
 ;; part 2, quite clunky, lol
 (def example-input-2
@@ -72,6 +72,5 @@
        (map process-line-2)
        (reduce +)))
 
-
-(println (part-2 example-input-2))
-(println (part-2 input))
+;(print-solution 2 (part-2 example-input-2))
+(print-solution 2 (part-2 input))

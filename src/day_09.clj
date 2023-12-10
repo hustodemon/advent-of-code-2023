@@ -1,7 +1,7 @@
 (ns day-09
   (:require
    [clojure.string :as string]
-   [utils]))
+   [utils :refer [print-solution]]))
 
 (def example-input
   "0 3 6 9 12 15
@@ -38,7 +38,7 @@
   (apply + (map compute-last parsed-input)))
 
 
-(println (compute-all (parse-input example-input)))
-(println (compute-all (parse-input input)))
-(println (compute-all (mapv reverse (parse-input example-input))))
-(println (compute-all (mapv reverse (parse-input input))))
+;;(println (compute-all (parse-input example-input)))
+(print-solution 1 (compute-all (parse-input input)))
+;;(println (compute-all (mapv reverse (parse-input example-input))))
+(print-solution 2 (compute-all (mapv reverse (parse-input input))))

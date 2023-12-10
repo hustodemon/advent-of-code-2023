@@ -2,7 +2,7 @@
   (:require
    [clojure.string :as string]
    [malli.experimental :as mx]
-   [utils]))
+   [utils :refer [print-solution]]))
 
 
 (mx/defn parse-input :- [:sequential [:tuple :string :string]]
@@ -26,7 +26,7 @@ QQQJA 483"))
 
 
 (mx/defn hand-strength :- :int
-  [card :- [:string {:min 5, :max 5}]]
+  [card :- [:string]]
   (let [same-card-partitions   (partition-by identity (sort card))
         partition-sizes-sorted (sort-by - (map count same-card-partitions))]
     (cond
@@ -58,8 +58,8 @@ QQQJA 483"))
     (apply + scores)))
 
 
-(part-1 example-input)
-(part-1 input)
+;;(part-1 example-input)
+(print-solution 1 (part-1 input))
 
 
 ;; part 2
@@ -103,7 +103,7 @@ QQQJA 483"))
     (apply + scores)))
 
 
-(part-2 example-input)
 ;; takes some time (~20 s)
-; (part-2 input)
+; (print-solution 2 (part-2 input))
+(println "Part 2 takes some time (~20s). Skipping.")
 ;; => 249356515
