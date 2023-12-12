@@ -83,8 +83,9 @@ humidity-to-location map:
      (map #(traverse-groups % groups) seeds))))
 
 
-(part-1 example-input)
-(part-1 input)
+(defn -main [& args]
+  (part-1 example-input)
+  (part-1 input))
 
 ;; part 2
 ;; brute-force is not enough for the part 2

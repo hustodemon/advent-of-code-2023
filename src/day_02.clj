@@ -46,7 +46,6 @@
        (map first)
        (reduce +)))
 
-(print-solution 1 (part-1 input))
 
 ;; part 2
 (defn evaluate-2 [game-str]
@@ -61,5 +60,7 @@
        (reduce +)))
 
 
-;(print-solution 2 (part-2 example-input))
-(print-solution 2 (part-2 input))
+(defn -main [& args]
+  ;;(print-solution 2 (part-2 example-input))
+  (print-solution 1 (part-1 input))
+  (print-solution 2 (part-2 input)))

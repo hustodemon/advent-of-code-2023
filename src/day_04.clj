@@ -34,5 +34,6 @@
   (apply + (map eval-line input)))
 
 
-;; (print-solution 1 (solve example-input))
-(print-solution 1 (solve input))
+(defn -main [& args]
+  ;; (print-solution 1 (solve example-input))
+  (print-solution 1 (solve input)))

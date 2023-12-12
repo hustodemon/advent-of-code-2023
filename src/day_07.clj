@@ -58,10 +58,6 @@ QQQJA 483"))
     (apply + scores)))
 
 
-;;(part-1 example-input)
-(print-solution 1 (part-1 input))
-
-
 ;; part 2
 (def joker-pimp ;; how much can a single joker pimp the hand
   {1 2 ;; high card -> 1 pair
@@ -103,7 +99,10 @@ QQQJA 483"))
     (apply + scores)))
 
 
-;; takes some time (~20 s)
-; (print-solution 2 (part-2 input))
-(println "Part 2 takes some time (~20s). Skipping.")
-;; => 249356515
+(defn -main [& args]
+  ;;(part-1 example-input)
+  (print-solution 1 (part-1 input))
+  ;; takes some time (~20 s)
+  ;; (print-solution 2 (part-2 input))
+  ;; => 249356515
+  (println "Part 2 takes some time (~20s). Skipping."))

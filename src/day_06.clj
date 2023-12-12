@@ -54,8 +54,6 @@ Distance:  9  40  200")
     (apply * winning-games)))
 
 
-(println (part-1 example-input))
-(println (part-1 (slurp "data/day_06.txt")))
 
 
 ;; part 2
@@ -66,8 +64,12 @@ Distance:  9  40  200")
        (map parse-long)))
 
 
-;; as expected, this is very slow, one possible improvement would be doing
-;; "binary search"
-(println "Brute force is quite slow. The solution is commented-out.")
-;;( count-winning-games
-;;  (parse-game-2 (slurp "data/day_06.txt")))
+(defn -main [& args]
+  (println (part-1 example-input))
+  (println (part-1 (slurp "data/day_06.txt")))
+  ;; as expected, this is very slow, one possible improvement would be doing
+  ;; "binary search"
+  ;;
+  ;;( count-winning-games
+  ;;  (parse-game-2 (slurp "data/day_06.txt")))
+  (println "Brute force is quite slow. The solution is commented-out."))

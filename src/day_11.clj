@@ -63,7 +63,7 @@
   ;; is there a better way?
   (for [coords1 coords
         coords2 coords
-        :when (not= coords1 coords2)]
+        :when (not= coords coords2)]
     (into #{} [coords1 coords2])))
 
 
@@ -76,4 +76,6 @@
        (map (partial apply compute-distance))
        (apply +)))
 
-(print-solution 1 (part-1 input))
+;(part-1 example-input)
+(defn -main [& args]
+  (print-solution 1 (part-1 input)))

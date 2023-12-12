@@ -65,4 +65,5 @@
     (quot (inc rtt-length) 2)))
 
 
-(print-solution 1 (solve input))
+(defn -main [& args]
+ (print-solution 1 (solve input)))

@@ -38,7 +38,8 @@
   (apply + (map compute-last parsed-input)))
 
 
-;;(println (compute-all (parse-input example-input)))
-(print-solution 1 (compute-all (parse-input input)))
-;;(println (compute-all (mapv reverse (parse-input example-input))))
-(print-solution 2 (compute-all (mapv reverse (parse-input input))))
+(defn -main [& args]
+  ;;(println (compute-all (parse-input example-input)))
+  (print-solution 1 (compute-all (parse-input input)))
+  ;;(println (compute-all (mapv reverse (parse-input example-input))))
+  (print-solution 2 (compute-all (mapv reverse (parse-input input)))))

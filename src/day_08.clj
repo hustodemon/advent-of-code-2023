@@ -82,11 +82,6 @@ XXX = (XXX, XXX)")
        (recur (inc steps) (traverse node (first insts) nodes) (rest insts))))))
 
 
-;;(part-1 (parse-input example-input))
-;;(part-1 (parse-input example-input-2))
-(print-solution 1 (part-1 (parse-input input)))
-
-
 (defn- nodes-ending-with [s nodes]
   (filter #(string/ends-with? % s) (keys nodes)))
 
@@ -116,6 +111,10 @@ XXX = (XXX, XXX)")
     (lcm lenghts)))
 
 
+(defn -main [& args]
+ ;;(part-1 (parse-input example-input))
+ ;;(part-1 (parse-input example-input-2))
+ (print-solution 1 (part-1 (parse-input input))))
 ;; (part-2-1 (parse-input example-input-3))
 ;; DO NOT RUN! it'll blow up, but the correct answer is 20685524831999
 ;; we need more efficient implementation :)
