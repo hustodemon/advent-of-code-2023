@@ -74,17 +74,14 @@
    tile-map :- Map
    visited :- [:set [:tuple Coord Coord]]]
 
-  (if fst
-    (if (contains? visited fst)
-      (recur rst
-             tile-map
-             visited)
-      (recur (concat
-              rst
-              (map (fn [c] [fst-current c]) (step fst-src fst-current tile-map)))
-             tile-map
-             (conj visited fst)))
-    visited))
+  (cond
+    ;; we visited this combination, just recur further
+    (contains? visited fst) (recur rst tile-map visited)
+    ;; we haven't visitid this combi -> visit its steps
+    (some? fst)             (recur (concat rst (map (fn [c] [fst-current c]) (step fst-src fst-current tile-map)))
+                                   tile-map
+                                   (conj visited fst))
+    :else                   visited))
 
 
 (mx/defn parse-input :- [:sequential [:sequential char?]]
